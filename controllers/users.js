@@ -15,21 +15,19 @@ const AuthorizationError = require('../errors/AuthorizationError');
 // Создать юзера - регистрация:
 const createUser = (req, res, next) => {
   const {
-    name, about, avatar, email, password,
+    email, password, name,
   } = req.body;
 
   bcrypt.hash(password, 10)
     .then((hash) => User.create({
-      name,
-      about,
-      avatar,
       email,
       password: hash,
+      name,
     }))
     .then((newUser) => {
       const { _id } = newUser;
       res.status(CREATE_CODE).send({
-        _id, email, name, about, avatar,
+        _id, email, name,
       });
     })
     .catch((err) => {
@@ -124,24 +122,6 @@ const updateUserById = (req, res, next) => {
     });
 };
 
-// Обновить аватар
-const updateUserAvatarById = (req, res, next) => {
-  const { avatar } = req.body;
-  User.findByIdAndUpdate(req.user._id, { avatar }, { new: true, runValidators: true })
-    .then((user) => {
-      if (!user) {
-        throw new NotFoundError('Пользователь не найден');
-      }
-      res.status(DONE_CODE).send(user)
-    })
-    .catch((err) => {
-      if (err.name === 'ValidationError') {
-        return next(new ValidationError('Ошибка валидации'));
-      }
-      return next(err);
-    });
-};
-
 module.exports = {
   getUsers,
   getMyInfo,
@@ -149,5 +129,4 @@ module.exports = {
   createUser,
   login,
   updateUserById,
-  updateUserAvatarById,
 };

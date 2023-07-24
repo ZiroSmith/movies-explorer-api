@@ -1,5 +1,5 @@
 /* eslint-disable linebreak-style */
-const Card = require('../models/card');
+const Card = require('../models/movies');
 const { DONE_CODE, CREATE_CODE } = require('../utils/constans');
 const ValidationError = require('../errors/ValidationError');
 const NotFoundError = require('../errors/NotFoundError');

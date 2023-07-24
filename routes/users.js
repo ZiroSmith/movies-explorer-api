@@ -1,9 +1,8 @@
 /* eslint-disable linebreak-style */
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
-const { REGEX } = require('../utils/constans');
 const {
-  getUsers, getMyInfo, getUserById, updateUserById, updateUserAvatarById,
+  getUsers, getMyInfo, getUserById, updateUserById,
 } = require('../controllers/users');
 
 router.get('/users', getUsers);
@@ -22,12 +21,5 @@ router.patch('/users/me', celebrate({
     about: Joi.string().required().min(3).max(29),
   }),
 }), updateUserById);
-
-router.patch('/users/me/avatar', celebrate({
-  body: Joi.object().keys({
-    // eslint-disable-next-line no-useless-escape
-    avatar: Joi.string().required().pattern(REGEX),
-  }),
-}), updateUserAvatarById);
 
 module.exports = router;

@@ -12,7 +12,7 @@ const { createUser, login } = require('./controllers/users');
 const { validationSignup, validationSignin } = require('./middlewares/validation');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
+const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
 
 // подключаемся к серверу mongo
 mongoose.connect(DB_URL, {

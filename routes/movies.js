@@ -4,7 +4,7 @@ const { celebrate, Joi } = require('celebrate');
 const { REGEX } = require('../utils/constans');
 const {
   getCards, createCard, likeCard, dislikeCard, deleteCardById,
-} = require('../controllers/cards');
+} = require('../controllers/movies');
 
 router.get('/cards', getCards);
 
