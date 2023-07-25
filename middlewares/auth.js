@@ -1,5 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-undef */
 const jwt = require('jsonwebtoken');
 const AuthorizationError = require('../errors/AuthorizationError');
 

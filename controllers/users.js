@@ -1,6 +1,3 @@
-/* eslint-disable semi */
-/* eslint-disable arrow-body-style */
-/* eslint-disable consistent-return */
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
@@ -56,21 +53,10 @@ const login = (req, res, next) => {
         }
         const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
         return res.status(DONE_CODE).send({ token });
-      })
+      });
     })
     .catch((err) => {
-      return next(err);
-    });
-};
-
-// Найти всех пользователей
-const getUsers = (req, res, next) => {
-  return User.find({})
-    .then((users) => {
-      return res.status(DONE_CODE).send(users);
-    })
-    .catch((err) => {
-      return next(err);
+      next(err);
     });
 };
 
@@ -83,26 +69,9 @@ const getMyInfo = (req, res, next) => {
       res.send(user);
     })
     .catch((err) => {
-      return next(err);
+      next(err);
     });
 };
-
-// Найти пользователя
-const getUserById = (req, res, next) => {
-  User.findById(req.params.id)
-    .then((user) => {
-      if (!user) {
-        throw new NotFoundError('Пользователь не найден');
-      }
-      res.status(DONE_CODE).send(user);
-    })
-    .catch((err) => {
-      if (err.name === 'CastError') {
-        return next(new ValidationError('Ошибка валидации'));
-      }
-      return next(err);
-    });
-}
 
 // Обновить данные пользователя
 const updateUserById = (req, res, next) => {
@@ -112,7 +81,7 @@ const updateUserById = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Пользователь не найден');
       }
-      res.status(DONE_CODE).send(user)
+      res.status(DONE_CODE).send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -123,9 +92,7 @@ const updateUserById = (req, res, next) => {
 };
 
 module.exports = {
-  getUsers,
   getMyInfo,
-  getUserById,
   createUser,
   login,
   updateUserById,
