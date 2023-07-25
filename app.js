@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -14,11 +13,10 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
 
-// подключаемся к серверу mongo
 mongoose.connect(DB_URL, {
   useNewUrlParser: true,
 }).then(() => {
-  console.log('Подключение к БД - успешно');
+  console.log('Подключено к БД');
 });
 
 const app = express();
