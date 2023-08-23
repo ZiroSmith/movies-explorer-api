@@ -81,7 +81,7 @@ const updateUserById = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Пользователь не найден');
       }
-      res.status(DONE_CODE).send(user);
+      res.status(DONE_CODE).send({ data: user });
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
