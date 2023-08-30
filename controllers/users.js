@@ -75,8 +75,16 @@ const getMyInfo = (req, res, next) => {
 
 // Обновить данные пользователя
 const updateUserById = (req, res, next) => {
-  const { name, email } = req.body;
-  User.findByIdAndUpdate(req.user._id, { name, email }, { new: true, runValidators: true })
+  const { email, name } = req.body;
+  User
+    .findByIdAndUpdate(
+      req.user._id,
+      { email, name },
+      {
+        new: true,
+        runValidators: true,
+      },
+    )
     .then((user) => {
       if (!user) {
         throw new NotFoundError('Пользователь не найден');
