@@ -1,10 +1,9 @@
 # Проект «Movies»
-## Бекенд часть приложения [Movies Explorer](https://github.com/KiryhaUdmurt/movies-explorer)
+## Бекенд часть приложения [Movies](https://github.com/ZiroSmith/movies-explorer-frontend)
 
 ## Описание проекта
 Backend проекта «Movies». Первый этап дипломного проекта курса "Веб-разработчик": реализация API для сервиса по поиску фильмов и их сохранении/удалении из личного кабинета.
 
-## Бекенд часть приложения [Movies](https://github.com/ZiroSmith/movies-explorer-frontend)
 ---
 ## Стек:
 - JavaScript
