@@ -13,7 +13,6 @@ Backend проекта «Movies». Первый этап дипломного п
 - MogoDB
 - Яндекс Облако
 
-
 ## Ссылки на проект
 
 Frontend: https://zeromovies.nomoredomainsicu.ru
