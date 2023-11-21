@@ -10,7 +10,7 @@ Backend проекта «Movies». Первый этап дипломного п
 - Node.js
 - Express.js
 - Git
-- MogoDB
+- MongoDB
 - Яндекс Облако
 
 ## Ссылки на проект
